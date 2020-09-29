@@ -5,17 +5,37 @@
     font-family: 'Gloria Hallelujah', cursive;
 }
 
-body {
-    padding: 0;
+:root {
+    --hue-neutrel: 200;
+    --hue-wrong: 0;
+    --hue-correct: 145
+}
+
+nav {
+    list-style-type: none;
     margin: 0;
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 2px;
+}
+
+nav div {
+    float: left;
+}
+
+#count {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 
 .container {
+    padding: 0;
+    margin: 0;
     width: 800px;
     max-width: 80%;
     background-color: aliceblue;
@@ -32,6 +52,7 @@ body {
 }
 
 .btn {
+    --hue: var(--hue-neutrel);
     border-radius: 5px;
     padding: 5px 10px;
     outline: none;
@@ -41,12 +62,23 @@ body {
     border-color: black;
 }
 
+.btn.correct {
+    --hue: var(--hue-correct);
+}
+
+.btn.wrong {
+    --hue: var(--hue-wrong)
+}
+
 .start-btn,
 .next-btn {
     font-size: 1.5rem;
     font-weight: bold;
     padding: 10px 20px;
 }
+
+
+/* add wrong and correct attributes - past you*/
 
 .controls {
     display: flex;
@@ -55,5 +87,5 @@ body {
 }
 
 .hide {
-    display: hide;
+    display: none;
 }
