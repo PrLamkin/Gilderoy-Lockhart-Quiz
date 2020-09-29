@@ -1,36 +1,33 @@
-//var count = 15;
-
-//var interval = setInterval(function() {
-//document.getElementById('count').innerHTML = count;
-//count--;
-//if (count === 0) {
-//clearInterval(interval);
-//document.getElementById('count').innerHTML = 'Done';
-// or...
-//alert("You're out of time!");
-//}
-//}, 1000);
-
-//work in progress timer
-
 const startbtn = document.getElementById("start-btn")
 const nextbtn = document.getElementById("next-btn")
 const questioncontainerZ = document.getElementById("Question-container")
 const questionElement = document.getElementById("question")
 const answerbtnelement = document.getElementById("answer-buttons")
+const Question_counter = document.getElementById("counter")
+const Quiz_score = document.getElementById("score")
 
 let shufflequestions, currentquestion
+let scoreZ = 0
+let questioncounter = 0
 
-startbtn.addEventListener("click", startgame)
+const correct_bonus = 1
+const MAX = 7
+
+startbtn.addEventListener("click", startgame,
+    Question_counter.innerText = "1" + "/" + MAX
+)
+
 nextbtn.addEventListener("click", () => {
     currentquestion++
+    Question_counter.innerText = currentquestion + "/" + MAX
     NEXTQUESTION()
 })
 
 function startgame() {
+    score = 0
     startbtn.classList.add("hide")
     shufflequestions = questions.sort(() => Math.random() - .5)
-    currentquestion = 0
+    currentquestion = 1
     questioncontainerZ.classList.remove("hide")
     NEXTQUESTION()
 }
@@ -73,6 +70,13 @@ function selectanswer(e) {
     } else {
         startbtn.innerText = "reset"
         startbtn.classList.remove("hide")
+        Question_counter.innerText = "7" + "/" + MAX
+    }
+}
+
+function setscoretotal(scoreZ) {
+    if (setStatusClass === correct) {
+        incrementscore(correct_bonus)
     }
 }
 
@@ -80,6 +84,7 @@ function setStatusClass(element, correct) {
     clearStatusClass(element)
     if (correct) {
         element.classList.add("correct")
+
     } else {
         element.classList.add("wrong")
     }
@@ -88,6 +93,11 @@ function setStatusClass(element, correct) {
 function clearStatusClass(element) {
     element.classList.remove("correct")
     element.classList.remove("wrong")
+}
+
+incrementscore = Number => {
+    scoreZ += Number;
+    Quiz_score.innerText = scoreZ;
 }
 
 const questions = [{
@@ -118,7 +128,7 @@ const questions = [{
         question: "What is Gilderoy Lockhart's greatest achievement?",
         answers: [
             { text: "Slaying the Werewolf!", correct: false },
-            { text: "Banishing the Bogle-Banshee with a Broom-stick", correct: true },
+            { text: "Banishing the Boggle-Banshee with a Broom-stick", correct: true },
             { text: "Living with a Yeti", correct: false },
             { text: "Writing Magical Me", correct: false }
         ]
@@ -131,7 +141,7 @@ const questions = [{
         ]
     },
     {
-        question: "How many times has Gilderoy Lockhart won 'Witch Weekly's MOst Charming Smile Award?",
+        question: "How many times has Gilderoy Lockhart win 'Witch Weekly's MOst Charming Smile Award?",
         answers: [
             { text: "100", correct: false },
             { text: "30", correct: false },

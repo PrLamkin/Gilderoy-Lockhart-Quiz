@@ -8,7 +8,7 @@
 :root {
     --hue-neutrel: 200;
     --hue-wrong: 0;
-    --hue-correct: 145
+    --hue-correct: 145;
 }
 
 nav {
@@ -21,27 +21,22 @@ nav {
     box-shadow: 0 0 10px 2px;
 }
 
-nav div {
-    float: left;
-}
-
-#count {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+.counts {
+    display: flex;
+    justify-content: space-around;
+    color: cornsilk;
+    padding: 3px;
+    font-weight: bold;
 }
 
 .container {
-    padding: 0;
-    margin: 0;
+    padding: 15px;
     width: 800px;
     max-width: 80%;
     background-color: aliceblue;
     border-radius: 6px;
-    padding: 10px;
     box-shadow: 0 0 10px 2px;
+    margin-left: 29%;
 }
 
 .btn-grid {
@@ -56,6 +51,8 @@ nav div {
     border-radius: 5px;
     padding: 5px 10px;
     outline: none;
+    background-color: hsl(var(--hue), 100%, 20%);
+    color: cornsilk;
 }
 
 .btn:hover {
@@ -76,9 +73,6 @@ nav div {
     font-weight: bold;
     padding: 10px 20px;
 }
-
-
-/* add wrong and correct attributes - past you*/
 
 .controls {
     display: flex;
